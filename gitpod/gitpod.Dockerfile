@@ -22,7 +22,7 @@ RUN apt -y upgrade && apt -y dist-upgrade
 # Install build dependencies
 RUN apt install -y docker-ce docker-ce-cli containerd.io
 
-RUN systemctl enable docker
+RUN service docker start
 
 # Remove apt sources to clean up space
 RUN rm -rf /var/lib/apt/lists/*
