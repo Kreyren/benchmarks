@@ -9,7 +9,7 @@ RUN apt-get update
 RUN apt -y upgrade && apt -y dist-upgrade
 
 # Install build dependencies
-RUN apt install -y docker
+RUN apt install -y docker-ce
 
 # Remove apt sources to clean up space
 RUN rm -rf /var/lib/apt/lists/*
