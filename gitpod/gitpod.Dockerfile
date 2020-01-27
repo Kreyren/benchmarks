@@ -9,6 +9,10 @@ RUN printf '%s\n' \
 # Add docker upstream key
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 
+RUN groupadd docker
+
+RUN usermod -aG docker gitpod
+
 # Update apt repositories
 RUN apt-get update
 
@@ -17,6 +21,8 @@ RUN apt -y upgrade && apt -y dist-upgrade
 
 # Install build dependencies
 RUN apt install -y docker-ce docker-ce-cli containerd.io
+
+RUN systemctl enable docker
 
 # Remove apt sources to clean up space
 RUN rm -rf /var/lib/apt/lists/*
